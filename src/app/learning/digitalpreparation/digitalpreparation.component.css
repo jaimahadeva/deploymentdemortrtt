@@ -1,0 +1,46 @@
+.leftside-conmtainer{
+    width: 20%;
+   min-height: 100vh;
+   overflow: auto;
+    float: left;
+   background: aliceblue; 
+   max-height: 100vh;
+    overflow: auto;
+    float: left;
+}
+.bcc{
+   background-color: ghostwhite;
+   min-height: 100vh;
+   max-height: 100vh;
+   overflow: auto;
+   float: left;
+}
+.topicnames-main{
+      /* add font */
+  font-size: 25px; 
+}
+.topicnames-txt{
+    color: deeppink;
+    cursor: pointer;
+}
+.coursenames-main{
+    /* float: left; */
+
+}
+.questions-main-div{
+   
+    width: 80%;
+    min-height: 30px;
+    border: 1px solid rgb(215, 207, 207);
+}
+.question-txt{
+    font-family: Roboto bold;
+    font-size: 20px;
+    padding: 2%;
+   
+}
+.answers-text{
+    font-family: Roboto normal;
+    font-size: 17px;
+    padding: 2%;
+}

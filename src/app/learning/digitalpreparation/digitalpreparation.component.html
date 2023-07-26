@@ -1,0 +1,117 @@
+
+
+<div class="col-sm-12" style="width: 100%;">
+<div class="col-sm-4 leftside-conmtainer" style="padding-top: 10px;" >
+   <div *ngIf="this.clickedCourseName==0">
+      Please Click on the Course
+ </div>
+   <div class="col-md-12">
+    <form *ngIf="this.clickedCourseName!==0" (ngSubmit)="addNewTopic()" class="col-md-12">
+        <div class="col-md-12 form-group">
+            <label *ngIf="!makeAddnewTrue" class="col-md-3" style="cursor: pointer;" (click)="makeAddTopicTrue()"> Add Topic </label>
+            <input *ngIf="makeAddnewTrue" class="col-md-9"  style="width: 80%;padding-left: 4px;"type="text" name="question" id="question" class="form-control"
+            [(ngModel)]="addnewTopi.topicName">
+         </div> 
+        <span  *ngIf="makeAddnewTrue"   style="padding-left: 30px;cursor: pointer;" >
+            <button type="submit">submit</button>
+        </span>
+   </form>
+
+   <div class="col-md-12 topicnames-main" *ngFor="let topicNames of  this.allTopicNames;let i =index " >
+    <div class="topicnames-txt" style="padding: 10px;"(click)="getClickedTopicName(topicNames)" *ngIf="this.clickedCourseName==topicNames.courseId">
+          {{topicNames.topicName}}
+    </div>
+</div>
+  </div>
+</div>
+
+<div class="col-sm-8 bcc" style="width: 80%;float: left;">
+    <div class="col-md-12" >
+   <div class="coursenames-main"  *ngFor="let courses of allCourseNames"(click)="getClickedCourse(courses)">
+     <span class="row" style="float: left;padding: 20px;cursor: pointer;"> 
+        
+        <span style="padding:10px;border-radius: 7px;background: greenyellow;">{{courses.courseName}}
+
+        </span> </span>
+   </div>
+</div>
+
+
+ 
+   <form (ngSubmit)="addnewCourses()" class="col-md-12">
+      <div class="col-md-12 form-group">
+       
+          <input  class="col-md-9"  style="width: 10%;padding-left: 4px;"type="text" name="question" id="question" class="form-control"
+          [(ngModel)]="addnewcourse.courseName">
+          <span >
+            <button style="text-align: center;" type="submit">submit</button>
+        </span>
+      </div> <br>
+      
+    
+  
+  </form>
+
+<div    class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addNewQuestion" style="font-family: Roboto boldItalic;font-size: 15px;" class="hand">
+    Add New Question
+</div>
+
+
+
+
+<div class="col-sm-12" style="padding-left: 5%;" *ngFor="let questions of digiQuestions;let i=index">
+    <div *ngIf="questions.topicId==this.addnewContentArray.topicId">
+      <div class="col-12 questions-main-div">
+        <span class="col-12 question-txt" (click)="showAnswer(questions)"> {{questions.questions}}</span>
+        <div style="padding: 6px;" *ngIf="!questions.view"> 
+            <span class="answers-text"> {{questions.answers}}</span>
+        </div>
+      </div> <br> 
+ 
+  
+</div>
+ </div>
+
+ 
+</div>
+</div>
+
+
+
+<div class="modal fade" id="addNewQuestion" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Add A Question</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <form (ngSubmit)="onsibmit()" class="col-md-12">
+                <div class="col-md-12 form-group">
+                    <label class="col-md-3"> Question </label><br>
+                    <input  class="col-md-9"  style="width: 70%;padding-left: 20px;"type="text" name="question" id="question" class="form-control"
+                    [(ngModel)]="digiAdd.questions">
+                    
+                </div> <br>
+                <div class="col-md-12 form-group" >
+                    <label class="col-md-3"> Answer </label>
+                    <textarea  class="col-md-9" style="width: 70%;padding-left: 20px;" type="text" name="answer" id="answer" class="form-control"
+                    [(ngModel)]="digiAdd.answers"></textarea>
+                </div>
+                <div class="col-md-12" >
+                    <button  data-bs-dismiss="modal" class="btn btn-primary" style="text-align: center;" type="submit">submit</button>
+                </div>
+            
+            </form>
+            
+        </div>
+        <!-- <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div> -->
+      </div>
+    </div>
+  </div>
+
