@@ -20,5 +20,8 @@ export class MenuComponent implements OnInit {
   gotoHome(){
     this.router.navigate([''])
   }
+  gotoEcomemrce(){
+    this.router.navigate(['/ecommerce/home'])
+  }
 
 }
