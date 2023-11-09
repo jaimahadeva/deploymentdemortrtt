@@ -6,7 +6,13 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class PreptalkserviceService {
-private baseUrl="http://localhost:8080/preptalk/v1"
+  [z: string]: any;
+  userName:any=''
+  private newBaseUrl="http://localhost:8080";
+private baseUrl="http://localhost:8080/preptalk/v1";
+private userDetailsUrl= this.newBaseUrl+"/createAccount";
+private userDetailsLoginUrl="http://localhost:8080/createAccount/login"
+  
   constructor(private httpclient:HttpClient) { }
 
   // getting the data from table 
@@ -17,4 +23,21 @@ private baseUrl="http://localhost:8080/preptalk/v1"
   addnewdigiQuestion(digiAdd:PreptalkserviceService):Observable<Object>{
     return this.httpclient.post(`${this.baseUrl}`+"/digitalquestions",digiAdd);
   }
+
+   //adding a new data from table 
+   createaNewAccount(userDetails:PreptalkserviceService):Observable<Object>{
+   
+    this.userName=userDetails['firstName']
+    console.log("userDetails",this.userName);
+    return this.httpclient.post(`${this.userDetailsUrl}`+"/submit",userDetails);
+    
+  }
+
+  loginByPassword(userDetails:PreptalkserviceService):Observable<Object>{
+   return this.httpclient.post(`${this.userDetailsLoginUrl}`,userDetails);
+  }
+  functt(){
+    alert("okay")
+  }
+
 }
